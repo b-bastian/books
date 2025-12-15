@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,10 @@ Route::post('/list', [BookController::class, 'saveBook'])->middleware(['auth'])-
 Route::delete('/destroy/{book}', [BookController::class, 'destroy'])
     ->middleware(['auth'])
     ->name('destroy');
+
+Route::get('/authors', [App\Http\Controllers\AuthorController::class, 'listAuthors'])->middleware(['auth'])->name('authors');
+
+Route::post('/authors', [AuthorController::class, 'saveAuthor'])->middleware(['auth'])->name('saveAuthor');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
