@@ -1,0 +1,20 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "/Users/bastian/Library/Application Support/Herd/bin/php84",
+            "args": [
+                "/Users/bastian/Herd/books-app/artisan",
+                "boost:mcp"
+            ]
+        },
+        "herd": {
+            "command": "/Users/bastian/Library/Application Support/Herd/bin/php84",
+            "args": [
+                "/Applications/Herd.app/Contents/Resources/herd-mcp.phar"
+            ],
+            "env": {
+                "SITE_PATH": "/Users/bastian/Herd/books-app"
+            }
+        }
+    }
+}
