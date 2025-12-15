@@ -12,8 +12,15 @@ class BookController extends Controller
         $attributes = request()->validate([
             'isbn' => 'required|min:3|max:255',
             'title' => 'required|min:1|max:255',
-            'pages' => 'required|min:1|max:255'
+            'pages' => 'required|integer'
         ]);
+
+        // nach validate
+        // nach min:3 max:255 und so ist er sich sicher das es richtig validiert wurde
+        // also kann er es speichern
+        Book::create($attributes);
+
+        return back()->with('success', 'Your book has been created.');
     }
 
     public function listBooks(): View

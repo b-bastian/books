@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h2 class="text-lg md:text-xl lg:text-2xl"> {{__('Add book') }}</h2>
 
-                    <form method="post" action="{{url('save')}}">
+                    <form method="post" action="{{ route('save') }}">
                         @csrf
 
                         <div>
