@@ -7,6 +7,13 @@ use Illuminate\View\View;
 
 class BookController extends Controller
 {
+    public function destroy(Book $book)
+    {
+        $book->delete();
+
+        return back()->with('success', 'The book has been deleted.');
+    }
+
     public function saveBook()
     {
         $attributes = request()->validate([

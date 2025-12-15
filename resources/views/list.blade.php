@@ -122,10 +122,16 @@
                                     {{-- TRASH ACTION --}}
                                     <div
                                         class="absolute inset-y-0 right-0 flex items-center translate-x-full group-hover:translate-x-0 transition-all duration-300 ease-out pr-3">
-                                        <button
-                                            class="w-9 h-9 flex items-center justify-center rounded-lg bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white transition">
-                                            <x-trash class="w-5 h-5" />
-                                        </button>
+                                        <form action="{{ route('destroy', ['book' => $book->id]) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button
+                                                class="w-9 h-9 flex items-center justify-center rounded-lg bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white transition">
+                                                <x-trash class="w-5 h-5" />
+                                                <span class="sr-only">Remove book</span>
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             @endif
