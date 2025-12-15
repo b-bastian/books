@@ -12,7 +12,7 @@ Die weitere Arbeit erfolgt in einem Code Editor wie Visual Studio Code oder PHPS
 
 ## Konfiguration
 
-Laravel wird in einer DAtei namens `.env` konfiguriert. Diese Datei muss besondern geshchützt werden, da sie auch Zugangsdaten beinhalten. Die Speicherung darf innicht in einem Repository erfolgen.
+Laravel wird in einer DAtei namens `.env` konfiguriert. Diese Datei muss besondern geshchützt werden, da sie auch Zugangsbeinhalten. Die Speicherung darf innicht in einem Repository erfolgen.
 
 Ein Key (`APP_KEY`) kann mittels `php artisan key:generate` erstellt werden. Standardmäßig wird die `.env`-Datei mittels -`.gitignore`-Datei geschützt.
 
@@ -338,3 +338,59 @@ Mit zB `@if` kann auch eine Verzweigung durchgeführt werden. Zum Beispiel könn
 ```
 
 Aus Performance-Gründen, würde diese Abfrage aber eher im Controller durchgeführt werden (`where`).
+
+## Daten eingeben
+
+### Formular
+
+Daten werden mit Formularen eingegeben. Mit `route('save')` wird auf die URL der Route `save` (siehe web.php) zugegriffen. Mittels `@csrf` wird das Formular vor unberechtigten Zugriffen geschützt. Fehlt `@csrf` so wird _Page expired_ ausgegeben. Um auch fehlerhafte Werte, welche nach einem Absenden des Formulars verschwinden würden, anzuzeigen, wird auf die gesendeten Daten mittels `old('feldname')` zugegriffen.
+
+Auf die Werte der Datenüberprüfung wird mittels `@error('isbn')` und `@enderror` zugegriffen. Dadurch kann eine detailierte Fehlermeldung angezeigt werden. Im _lang_-Ordner befinden sich die installierten/übersetzten Sprachen. Mit `php artisan lang:publish` wird die Standardsprache im Ordner `lang` erstellt.
+
+> **Hinweis**: Eine Komponente in `resources/views/components` wird mittels Präfix `x-` hinzugefügt. Der "Primary Button" wird also mit `<x-primary-button>` hinzugefügt.
+
+```bladehtml
+<form method="post" action="{{ route('save') }}" class="space-y-5">
+    @csrf
+
+    <div>
+        <label for="isbn" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            {{ __('ISBN') }}
+        </label>
+        <input id="isbn" name="isbn" value="{{ old('isbn') }}" type="text" class="mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-700
+        dark:bg-gray-900 dark:text-gray-100
+        focus:border-indigo-500 focus:ring-indigo-500">
+        @error('isbn')
+            <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+        @enderror
+    </div>
+
+    <div>
+        <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            {{ __('Title') }}
+        </label>
+        <input id="title" name="title" value="{{ old('title') }}" type="text" class="mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-700
+        dark:bg-gray-900 dark:text-gray-100
+        focus:border-indigo-500 focus:ring-indigo-500">
+        @error('title')
+            <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+        @enderror
+    </div>
+
+    <div>
+        <label for="pages" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            {{ __('Pages') }}
+        </label>
+        <input id="pages" name="pages" value="{{ old('pages') }}" type="number" class="mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-700
+        dark:bg-gray-900 dark:text-gray-100
+        focus:border-indigo-500 focus:ring-indigo-500">
+        @error('pages')
+            <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+        @enderror
+    </div>
+
+    <x-primary-button class="w-full justify-center py-3 text-base">
+        {{ __('Save book') }}
+    </x-primary-button>
+</form>
+```
