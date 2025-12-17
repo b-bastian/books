@@ -31,6 +31,10 @@ Route::get('/authors', [App\Http\Controllers\AuthorController::class, 'listAutho
 
 Route::post('/authors', [AuthorController::class, 'saveAuthor'])->middleware(['auth'])->name('saveAuthor');
 
+Route::delete('/destroyAuthor/{author}', [AuthorController::class, 'destroy'])
+    ->middleware(['auth'])
+    ->name('destroyAuthor');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

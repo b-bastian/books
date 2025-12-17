@@ -102,7 +102,7 @@
                                 {{-- TRASH ACTION --}}
                                 <div
                                     class="absolute inset-y-0 right-0 flex items-center translate-x-full group-hover:translate-x-0 transition-all duration-300 ease-out pr-3">
-                                    <form action="{{ route('destroy', ['author' => $author->id]) }}" method="post">
+                                    <form action="{{ route('destroyAuthor', ['author' => $author->id]) }}" method="post">
                                         @csrf
                                         @method('DELETE')
 
@@ -112,6 +112,7 @@
                                             <span class="sr-only">Remove author</span>
                                         </button>
                                     </form>
+
                                 </div>
                             </div>
                         @empty

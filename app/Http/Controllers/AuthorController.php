@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
 use Illuminate\Http\Request;
-use App\Models\Authors;
 
 class AuthorController extends Controller
 {
+    public function destroy(Author $author)
+    {
+        $author->delete();
+
+        return back()->with('success', 'The author has been deleted.');
+    }
+
     public function listAuthors()
     {
         return view('authors', [
-            'authors' => Authors::all()
+            'authors' => Author::all()
         ]);
     }
 
@@ -21,7 +28,7 @@ class AuthorController extends Controller
             'email' => 'required|min:1|max:255'
         ]);
 
-        $author = Authors::create($attributes);
+        $author = Author::create($attributes);
 
         return back()->with('success', 'Your author has been created.');
     }
