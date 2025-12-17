@@ -14,6 +14,13 @@ class AuthorController extends Controller
         return back()->with('success', 'The author has been deleted.');
     }
 
+    public function editAuthor(Author $author)
+    {
+        return view('authors.edit', [
+            'author' => $author
+        ]);
+    }
+
     public function listAuthors()
     {
         return view('authors', [
@@ -24,12 +31,16 @@ class AuthorController extends Controller
     public function saveAuthor()
     {
         $attributes = request()->validate([
-            'name' => 'required|min:3|max:255',
-            'email' => 'required|min:1|max:255'
+            'name' => 'required|min:1|max:255',
+            'email' => 'required|min:1|max:255|email:rfc,dns'
         ]);
 
-        $author = Author::create($attributes);
+        try {
+            $author = Author::create($attributes);
 
-        return back()->with('success', 'Your author has been created.');
+            return back()->with('success', 'Your author has been created.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'There was an error creating the author: ' . $e->getMessage());
+        }
     }
 }

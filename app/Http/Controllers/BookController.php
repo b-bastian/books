@@ -7,11 +7,31 @@ use Illuminate\View\View;
 
 class BookController extends Controller
 {
-    public function destroy(Book $book)
+    public function destroyBook(Book $book)
     {
         $book->delete();
 
         return back()->with('success', 'The book has been deleted.');
+    }
+
+    public function editBook(Book $book)
+    {
+        return view('books.edit', [
+            'book' => $book
+        ]);
+    }
+
+    public function updateBook(Book $book)
+    {
+        $attributes = request()->validate([
+            'isbn' => 'required|min:3|max:255',
+            'title' => 'required|min:1|max:255',
+            'pages' => 'required|integer'
+        ]);
+
+        $book->update($attributes);
+
+        return back()->with('success', 'Your book has been updated.');
     }
 
     public function saveBook()
