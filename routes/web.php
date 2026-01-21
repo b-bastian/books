@@ -72,8 +72,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.delete');
 });
 
-Route::middleware('auth')->group(function(){
-    Route::controller(TokenController::class)->group(function(){
+Route::middleware('auth')->group(function () {
+    Route::controller(TokenController::class)->group(function () {
 
         Route::get('/tokens', 'index')->name('token.list');
 

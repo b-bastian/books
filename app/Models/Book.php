@@ -14,18 +14,21 @@ class Book extends Model
      */
     protected $fillable =
         [
-        'isbn',
-        'title',
-        'pages',
-        'author_id'];
+            'isbn',
+            'title',
+            'pages',
+            'author_id'
+        ];
 
-    public function author(): BelongsTo {
-       return $this->belongsTo(Author::class);
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(Author::class);
     }
 
 
 
-    public function user(): BelongsTo {
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 

@@ -74,7 +74,7 @@
                     {{-- FLASH MESSAGES --}}
                     @if (session('success'))
                         <div class="flex items-center gap-3 rounded-xl
-                                        bg-lime-50/80 dark:bg-lime-900/20 px-4 py-3">
+                                            bg-lime-50/80 dark:bg-lime-900/20 px-4 py-3">
                             <div class="w-2 h-2 rounded-full bg-lime-500"></div>
                             <p class="text-lime-700 dark:text-lime-400 font-medium">
                                 {{ session('success') }}
@@ -84,7 +84,7 @@
 
                     @if (session('error'))
                         <div class="flex items-center gap-3 rounded-xl
-                                        bg-red-50/80 dark:bg-red-900/20 px-4 py-3">
+                                            bg-red-50/80 dark:bg-red-900/20 px-4 py-3">
                             <div class="w-2 h-2 rounded-full bg-red-500"></div>
                             <p class="text-red-700 dark:text-red-400 font-medium">
                                 {{ session('error') }}
@@ -104,16 +104,16 @@
                     <div class="space-y-3">
                         @forelse ($books as $book)
                             <div class="group relative overflow-hidden rounded-xl
-                                            bg-white/50 dark:bg-gray-900/40
-                                            transition-all duration-300
-                                            hover:shadow-md hover:-translate-y-0.5
-                                            hover:bg-gray-50 dark:hover:bg-gray-800/70">
+                                                bg-white/50 dark:bg-gray-900/40
+                                                transition-all duration-300
+                                                hover:shadow-md hover:-translate-y-0.5
+                                                hover:bg-gray-50 dark:hover:bg-gray-800/70">
 
                                 <div class="flex items-center gap-4 px-4 py-3 pr-14">
                                     <div class="flex-1 space-y-0.5">
                                         <p
                                             class="font-bold text-gray-900 dark:text-gray-100
-                                                      group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                                                          group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                                             {{ $book->title }}
                                         </p>
                                         <p class="text-xs text-gray-500 tracking-wide">
@@ -131,24 +131,24 @@
                                     </div>
 
                                     <span class="shrink-0 text-xs font-medium px-2.5 py-1 rounded-full
-                                                     bg-gray-100 dark:bg-gray-800
-                                                     text-gray-700 dark:text-gray-300
-                                                     group-hover:bg-indigo-100 dark:group-hover:bg-indigo-900/40
-                                                     group-hover:text-indigo-700 dark:group-hover:text-indigo-300
-                                                     transition-all duration-300
-                                                     group-hover:-translate-x-12">
+                                                         bg-gray-100 dark:bg-gray-800
+                                                         text-gray-700 dark:text-gray-300
+                                                         group-hover:bg-indigo-100 dark:group-hover:bg-indigo-900/40
+                                                         group-hover:text-indigo-700 dark:group-hover:text-indigo-300
+                                                         transition-all duration-300
+                                                         group-hover:-translate-x-12">
                                         {{ $book->pages }} pages
                                     </span>
                                 </div>
 
                                 {{-- ACTIONS --}}
                                 <div class="absolute inset-y-0 right-0 flex items-center gap-2
-                                                translate-x-full group-hover:translate-x-0
-                                                transition-all duration-300 ease-out pr-3">
+                                                    translate-x-full group-hover:translate-x-0
+                                                    transition-all duration-300 ease-out pr-3">
 
                                     <a href="{{ route('books.edit', $book) }}" class="w-9 h-9 flex items-center justify-center rounded-lg
-                                                  text-indigo-400 hover:text-indigo-600
-                                                  hover:bg-indigo-500/10 dark:hover:text-indigo-300 transition">
+                                                      text-indigo-400 hover:text-indigo-600
+                                                      hover:bg-indigo-500/10 dark:hover:text-indigo-300 transition">
                                         <x-pencil class="w-5 h-5" />
                                     </a>
 
@@ -156,8 +156,8 @@
                                         @csrf
                                         @method('DELETE')
                                         <button class="w-9 h-9 flex items-center justify-center rounded-lg
-                                                       bg-red-500/10 text-red-500
-                                                       hover:bg-red-500 hover:text-white transition">
+                                                           bg-red-500/10 text-red-500
+                                                           hover:bg-red-500 hover:text-white transition">
                                             <x-trash class="w-5 h-5" />
                                         </button>
                                     </form>

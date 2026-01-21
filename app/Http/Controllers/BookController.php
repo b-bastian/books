@@ -12,8 +12,7 @@ class BookController extends Controller
     public function destroyBook(Book $book)
     {
 
-        if (! Gate::allows('update-book', $book))
-        {
+        if (!Gate::allows('update-book', $book)) {
             abort(403);
         }
         $book->delete();
@@ -23,8 +22,7 @@ class BookController extends Controller
 
     public function editBook(Book $book)
     {
-        if (! Gate::allows('update-book', $book))
-        {
+        if (!Gate::allows('update-book', $book)) {
             abort(403);
         }
 
@@ -38,7 +36,7 @@ class BookController extends Controller
     public function updateBook(Book $book)
     {
 
-        if (! Gate::allows('update-book', $book)) {
+        if (!Gate::allows('update-book', $book)) {
             abort(403);
         }
 
