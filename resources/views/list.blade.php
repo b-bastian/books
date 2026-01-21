@@ -46,6 +46,15 @@
                                        focus:border-indigo-500 focus:ring-indigo-500 transition">
                         </div>
 
+                        {{-- AUTHOR --}}
+                        <div class="space-y-1">
+                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Author</label>
+                            <input name="author_id" value="{{ old('author_id') }}" class="block w-full rounded-xl border-gray-300 dark:border-gray-700
+                                       bg-white/60 dark:bg-gray-900/50
+                                       text-gray-900 dark:text-gray-100
+                                       focus:border-indigo-500 focus:ring-indigo-500 transition">
+                        </div>
+
                         <x-primary-button class="w-full justify-center py-3 text-base
                                    transition-all duration-200
                                    hover:-translate-y-0.5 hover:shadow-md">
@@ -119,7 +128,6 @@
                                                 Kein Autor vorhanden
                                             </p>
                                         @endif
-
                                     </div>
 
                                     <span class="shrink-0 text-xs font-medium px-2.5 py-1 rounded-full
